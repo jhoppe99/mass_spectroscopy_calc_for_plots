@@ -1,0 +1,24 @@
+import csv 
+import pandas as pd
+
+with open('background.csv', 'r') as file:
+    reader = csv.reader(file)
+    data = list(reader)
+# backround_data = pd.read_csv('background.csv')
+# print(backround_data)
+
+data = data[3034:]
+txt1 = data[2]
+txt2 = txt1[0]
+
+for n in range(0, len(data)):
+    data[n] = data[n][0].split()
+
+df = pd.DataFrame(data, columns=('mass', 'intensity'))
+print(df)
+
+x = df['mass'][2]
+x1 = x.replace(';', '')
+x1 = float(x1)
+print(x1)
+print(type(x1))
